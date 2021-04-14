@@ -12,7 +12,7 @@ The process for following an invitation and visiting a bar is started as soon as
 # 1. Add the Gateways
 Add a splitting gateway after the "Call a uber" task and change its type to "Parallel Gateway" by clicking the wrench-symbol. The token will be duplicated at this point and both of the tasks "Pack smartphone" and "Pack wallet" will wait for execution. Add a merging gateway after the two tasks, to make sure the process will not be further executed, before you haven't packed your smartphone **AND** your wallet.
 
-![Bar Invitation](img/ChangeGatewayType.png?raw=true) <!-- .element height="50%" width="50%" -->
+![Bar Invitation](img/ChangeGatewayType.png?raw=true) <!-- .element height="10%" width="50%" -->
 
 
 
