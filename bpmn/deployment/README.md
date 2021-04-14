@@ -29,6 +29,6 @@ Using the UI in your browser, click on "Tasklist" in the upper right corner.
 
 In the tasklist view, click "Start process" and select your deployed process. 
 
-![Tasklist](https://github.com/camunda-university-meetup/exercises/blob/dev/bpmn/deployment/img/StartPorcess.png?raw=true)
+![Tasklist](https://github.com/camunda-university-meetup/exercises/blob/dev/bpmn/deployment/img/StartProcess.png?raw=true)
 
 The engine will begin to work along the process path and display tasks which have to be executed by humans in the tasklist.
