@@ -24,7 +24,12 @@
       <bpmn:outgoing>Flow_0qwylbi</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_0qwylbi" sourceRef="StartEvent_OrderReceived" targetRef="Task_ProcessOrder" />
-    <bpmn:userTask id="Task_ProcessOrder" name="Process order" camunda:assignee="max.mustermann" camunda:candidateGroups="controlling">
+    <bpmn:userTask id="Task_ProcessOrder" name="Process order">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="FormField_2bku0m4" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0qwylbi</bpmn:incoming>
       <bpmn:outgoing>Flow_19pb4pd</bpmn:outgoing>
     </bpmn:userTask>
