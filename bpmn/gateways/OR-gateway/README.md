@@ -9,13 +9,13 @@ The process starts as soon as you require some kind of groceries. You first have
 At which point should the information about which groceries are required enter the process?
 Create a form that let's you add the information and utilize the process variables by using Expressions.
 
-# 1 Add a form
+# 1. Add a form
 
 The process should be started by setting the information about which groceries are required. So, in order to create your shopping list, set three different form fields (*apples*, *steak* and *noodles*) of type *boolean* at the start-event.
 
 ![Form](https://github.com/camunda-university-meetup/exercises/blob/dev/bpmn/gateways/OR-gateway/img/Form_StartEvent.png?raw=true)
 
-# 2 Use the variables
+# 2. Use the variables
 
 You are only supposed to buy apples, if you initially wrote them on your shopping list. That means you have to add the boolean expression to the corresponding flow. Click the arrow and add an Expression with the corresponding process variable name.
 
