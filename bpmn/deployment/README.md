@@ -25,10 +25,10 @@ Your process definition should now be visible in the in the Camunda cockpit.
  
 Using the UI in your browser, click on "Tasklist" in the upper right corner.
  
-![Camunda UI](Camunda_UI.png?raw=true)
+![Camunda UI](img/Camunda_UI.png?raw=true)
 
 In the tasklist view, click "Start process" and select your deployed process. 
 
-![Tasklist](StartProcess.png?raw=true)
+![Tasklist](img/StartProcess.png?raw=true)
 
 The engine will begin to work along the process path and display tasks which have to be executed by humans in the tasklist.
