@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1nsja06" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+  <bpmn:process id="Afternoon-activity_XOR-Gateways" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_activityRequired" name="Activity for afternoon required">
+      <bpmn:outgoing>Flow_17eqz2m</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17eqz2m" sourceRef="StartEvent_activityRequired" targetRef="Activity_checkWeather" />
+    <bpmn:exclusiveGateway id="Gateway_weatherDependency">
+      <bpmn:incoming>Flow_10aqgwc</bpmn:incoming>
+      <bpmn:outgoing>Flow_sunny</bpmn:outgoing>
+      <bpmn:outgoing>Flow_rainy</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_10aqgwc" sourceRef="Activity_checkWeather" targetRef="Gateway_weatherDependency" />
+    <bpmn:sequenceFlow id="Flow_sunny" name="sunny" sourceRef="Gateway_weatherDependency" targetRef="Activity_park" />
+    <bpmn:sequenceFlow id="Flow_rainy" name="rainy" sourceRef="Gateway_weatherDependency" targetRef="Activity_study" />
+    <bpmn:endEvent id="Event_1ascz15" name="Activity executed">
+      <bpmn:incoming>Flow_0p0ahez</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0p0ahez" sourceRef="Activity_park" targetRef="Event_1ascz15" />
+    <bpmn:endEvent id="Event_1s3hk9c" name="Activity executed">
+      <bpmn:incoming>Flow_1n1nkvv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1n1nkvv" sourceRef="Activity_study" targetRef="Event_1s3hk9c" />
+    <bpmn:userTask id="Activity_checkWeather" name="Check the weather">
+      <bpmn:incoming>Flow_17eqz2m</bpmn:incoming>
+      <bpmn:outgoing>Flow_10aqgwc</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_park" name="Go to the park">
+      <bpmn:incoming>Flow_sunny</bpmn:incoming>
+      <bpmn:outgoing>Flow_0p0ahez</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_study" name="Study">
+      <bpmn:incoming>Flow_rainy</bpmn:incoming>
+      <bpmn:outgoing>Flow_1n1nkvv</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Afternoon-activity_XOR-Gateways">
+      <bpmndi:BPMNEdge id="Flow_1n1nkvv_di" bpmnElement="Flow_1n1nkvv">
+        <di:waypoint x="630" y="290" />
+        <di:waypoint x="692" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0p0ahez_di" bpmnElement="Flow_0p0ahez">
+        <di:waypoint x="630" y="100" />
+        <di:waypoint x="692" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05un6cd_di" bpmnElement="Flow_rainy">
+        <di:waypoint x="450" y="202" />
+        <di:waypoint x="450" y="290" />
+        <di:waypoint x="530" y="290" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="478" y="263" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17ui3e8_di" bpmnElement="Flow_sunny">
+        <di:waypoint x="450" y="152" />
+        <di:waypoint x="450" y="100" />
+        <di:waypoint x="530" y="100" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="475" y="78" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10aqgwc_di" bpmnElement="Flow_10aqgwc">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="425" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17eqz2m_di" bpmnElement="Flow_17eqz2m">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_activityRequired">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="152" y="202" width="90" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1wtuwkc_di" bpmnElement="Gateway_weatherDependency" isMarkerVisible="true">
+        <dc:Bounds x="425" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ascz15_di" bpmnElement="Event_1ascz15">
+        <dc:Bounds x="692" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="669" y="125" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1s3hk9c_di" bpmnElement="Event_1s3hk9c">
+        <dc:Bounds x="692" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="669" y="315" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_058eil1_di" bpmnElement="Activity_checkWeather">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ac57p8_di" bpmnElement="Activity_park">
+        <dc:Bounds x="530" y="60" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ugro98_di" bpmnElement="Activity_study">
+        <dc:Bounds x="530" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
