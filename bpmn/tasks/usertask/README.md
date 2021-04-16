@@ -19,16 +19,48 @@ A form is already defined in the start event. A detailed documentation  Take a c
 A more detailed documentation on generated forms is available [here](https://docs.camunda.org/manual/latest/user-guide/task-forms/#generated-task-forms).
 
 ### 1.1 Process Order
-Create a form for the "Process Order" task. Make sure that the product and quantity can only be read. However, the address can be customized, as it is common that customers do not provide it in the correct format. 
+Create a form for the `Process Order` task.
+The following fields should be displayed:
 
-*Hinweise*:
+- product
+- amount
+- address
+
+Make sure that the product and quantity can only be read. However, the address can be customized, as it is common that customers do not provide it in the correct format. 
+
+*Hints*:
 - there is a validation named `readonly`
 - the id (process variable name) of the fields must match the ones of the start event
 - do not forget to configure the type and the label
 
+
 ### 1.2 Deliver Order
+Almost there. Now we need a form for the `Deliver order` task that contains the following fields:
+
+- address
+- delivered (boolean / checkbox)
+
+The address cannot be edited. To complete the task the checkbox delivered must be selected.
+
+*Hints*:
+If a `boolean` contains the validation `required`, the checkbox must be selected to complete the task.
 
 
-## 2. Configure Assignments
+## 2. Configure assignments
+By configuring the User Task, we can control who the task is available to. The following options are available to us for this purpose:
+
+- Assignment to a specific person via the assignee attribute
+- Assignment to a group of persons via the candidate user / candidate group attribute
+
+![Start Form](img/02-Assignment.png?raw=true "Start Form")
+
+### 2.1 Process Order
+In our process, the task "Process Order" is always processed by XY. Therefore we can enter this as assignee.
+
+Start the process and then log in with XY to complete the Process Order task.
+
+### 2.2 Deliver Order
+The delivery can be made by any person who is in the group logistic.
 
 
+## 3. Configure a timeout (advanced)

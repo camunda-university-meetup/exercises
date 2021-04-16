@@ -35,6 +35,6 @@ This section provides an introduction to BPMN and includes practice exercises on
 
 ### Patterns
 
-Hier etwas zu Patterns
+
 
 
