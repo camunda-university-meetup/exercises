@@ -87,4 +87,4 @@ client.subscribe("taskName")
 
 Try to implement the client and check if it fetches the external task.
 A sample project containing a client that is configured to fetch the *calculateAge* task from the age verification process can be found here:
-[Link to Repo](/repo.git)
+[ExternalWorker](https://github.com/camunda-university-meetup/externalWorker.git)
