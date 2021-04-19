@@ -26,16 +26,16 @@ To introduce the variables locally, open the Camunda Modeler and navigate to the
 
 ## Automation
 ### Delegates
-Next, cast the task to a servicetask, open the "General"-tab in the Properties Panel and and choose "Delegate Expression" in the in the "Implementation"-filed. The code for this delegate is already included in the exercise-application project. Enter 
+Next, cast the task to a servicetask, open the "General"-tab in the Properties Panel and and choose "Delegate Expression" in the "Implementation"-filed. The code for this delegate is already included in the exercise-application project. Enter 
 ```
 ${ageCalculationDelegate}
 ```
 in the "Delegate Expression" textfield, to call it as soon as the task is started.
 Now redeploy your process and test the execution. Did the servicetask calculate the age correctly?
 
-If everything is working, try to switch the "Check data"-task to a servicetask aswell. Use this template for the new Java class and let the method print the birthdate and the calculated age in the console.
+If everything is working, try to switch the "Check data"-task to a servicetask aswell. Use this template for the new Java class and let the method print the birthdate and the calculated age in the console. Check the "AgeCalculationDelegate.java" class to find out which methods are used to fetch the fetch the required input.
 
-````
+```java
 @Component("yourDelegateName")  
 @RequiredArgsConstructor  
 public class YourDelegateName implements JavaDelegate {  
@@ -50,7 +50,7 @@ public class YourDelegateName implements JavaDelegate {
 
   }  
 }
-````
+```
 
 ### External tasks
 Delegate Expressions allow you to automate tasks by coding the business logic directly into your local project. But let's say you want to outsource some tasks or have to set up an information exchange across company borders. In this case you will make use of the *External* servicetasks.
