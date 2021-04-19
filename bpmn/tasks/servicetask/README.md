@@ -1,7 +1,7 @@
 # Service Tasks
 Take a look at the following age verification process:
 
-![Age verification process](img/process.png)
+![Age verification process](img/age-verification-process.png)
 
 Let's say you are working in a liquor store and a suspiciously young looking guy wants to buy a bottle of Whiskey. You'll have to start a process to verify his age. At first you take a look at his ID in order to figure out his birthdate. Afterwards you'll calculate his age and ultimately check the data you have created during this process.
 
@@ -53,3 +53,38 @@ public class YourDelegateName implements JavaDelegate {
 ````
 
 ### External tasks
+Delegate Expressions allow you to automate tasks by coding the business logic directly into your local project. But let's say you want to outsource some tasks or have to set up an information exchange across company borders. In this case you will make use of the *External* servicetasks.
+In order to give you an idea how to do this, we will just use our age verification process and make the "Calculate age" task an external task. Therefore, open the Camunda Modeler and change the implementation of the task to "External". This allows the task to be fetched from the API - as soon as its execution is started by the process engine. And in order to fetch it, we will need to build a client.
+
+Have a look at the [Camunda Docs](https://docs.camunda.org/manual/latest/user-guide/ext-client/spring-boot-starter/) for detailed information about external tasks and the capabilities of the Camunda framework.
+
+In order to build a client, you have to use the *ExternalTaskClient* interface, provided by the Camunda library, to specify the API and then subscribe the client to a specific task of your process.
+A skeleton of an external client looks like this:
+
+```java
+//build the client by passing the entry point to the Java API and providing a timeout duration  
+ExternalTaskClient client = ExternalTaskClient.create()  
+        .baseUrl("http://localhost:8080/engine-rest")  
+        .asyncResponseTimeout(10 * 1000)  
+        .build();  
+  
+//subscribe to an external task by specifying the "topic"-description as in the diagram  
+client.subscribe("taskName")  
+        .lockDuration(50 * 1000)  
+        .handler((externalTask, externalTaskService) -> {  
+			
+			//Fetch the variables:
+			String variable = (String) externalTask.getVariable("variableName");
+			
+			/*
+			Add your business logic here
+			 */
+  
+			externalTaskService.complete(externalTask, variables);  
+			})  
+        .open();
+```
+
+Try to implement the client and check if it fetches the external task.
+A sample project containing a client that is configured to fetch the *calculateAge* task from the age verification process can be found here:
+[Link to Repo](/repo.git)
