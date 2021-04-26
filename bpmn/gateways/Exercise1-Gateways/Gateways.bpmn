@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0a5vf1y" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+  <bpmn:process id="Bar-invitation_gateway-exercise" isExecutable="true">
+    <bpmn:startEvent id="Event_1yfz6j8" name="Invitation to the bar accepted">
+      <bpmn:outgoing>Flow_0794952</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0q2pe8i" name="Arrived at the bar">
+      <bpmn:incoming>Flow_1m8yyqh</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0794952" sourceRef="Event_1yfz6j8" targetRef="Activity_1d87351" />
+    <bpmn:sequenceFlow id="Flow_1dc4ygx" sourceRef="Activity_12j1jnq" targetRef="Activity_0xdq49d" />
+    <bpmn:sequenceFlow id="Flow_1m8yyqh" sourceRef="Activity_0xdq49d" targetRef="Event_0q2pe8i" />
+    <bpmn:userTask id="Activity_1d87351" name="Call an uber">
+      <bpmn:incoming>Flow_0794952</bpmn:incoming>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_05s8k87" name="Pack smartphone" />
+    <bpmn:userTask id="Activity_1uxe5o0" name="Pack wallet" />
+    <bpmn:userTask id="Activity_12j1jnq" name="Enter Uber">
+      <bpmn:outgoing>Flow_1dc4ygx</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0xdq49d" name="Drive to bar">
+      <bpmn:incoming>Flow_1dc4ygx</bpmn:incoming>
+      <bpmn:outgoing>Flow_1m8yyqh</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Bar-invitation_gateway-exercise">
+      <bpmndi:BPMNEdge id="Flow_1m8yyqh_di" bpmnElement="Flow_1m8yyqh">
+        <di:waypoint x="1000" y="190" />
+        <di:waypoint x="1052" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dc4ygx_di" bpmnElement="Flow_1dc4ygx">
+        <di:waypoint x="850" y="190" />
+        <di:waypoint x="900" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0794952_di" bpmnElement="Flow_0794952">
+        <di:waypoint x="168" y="190" />
+        <di:waypoint x="220" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0q2pe8i_di" bpmnElement="Event_0q2pe8i">
+        <dc:Bounds x="1052" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1028" y="215" width="85" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1awawb9_di" bpmnElement="Activity_05s8k87">
+        <dc:Bounds x="500" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_194nuqd_di" bpmnElement="Activity_1uxe5o0">
+        <dc:Bounds x="500" y="210" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1k2wiqs_di" bpmnElement="Activity_12j1jnq">
+        <dc:Bounds x="750" y="150" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1w3mard_di" bpmnElement="Activity_0xdq49d">
+        <dc:Bounds x="900" y="150" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1yfz6j8_di" bpmnElement="Event_1yfz6j8">
+        <dc:Bounds x="132" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="113" y="215" width="75" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1apkwpi_di" bpmnElement="Activity_1d87351">
+        <dc:Bounds x="220" y="150" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
