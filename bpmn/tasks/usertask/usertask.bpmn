@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_19zzys8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
-  <bpmn:process id="UserTask_OrderProcess" isExecutable="true">
+  <bpmn:process id="UserTask_OrderProcess" name="User Task - Order Process" isExecutable="true">
     <bpmn:startEvent id="StartEvent_OrderReceived" name="Order received">
       <bpmn:extensionElements>
         <camunda:formData>
@@ -14,7 +14,7 @@
               <camunda:constraint name="min" config="1" />
             </camunda:validation>
           </camunda:formField>
-          <camunda:formField id="address" label="Address">
+          <camunda:formField id="address" label="Address" type="string">
             <camunda:validation>
               <camunda:constraint name="required" />
             </camunda:validation>
@@ -25,11 +25,6 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_0qwylbi" sourceRef="StartEvent_OrderReceived" targetRef="Task_ProcessOrder" />
     <bpmn:userTask id="Task_ProcessOrder" name="Process order">
-      <bpmn:extensionElements>
-        <camunda:formData>
-          <camunda:formField id="FormField_2bku0m4" />
-        </camunda:formData>
-      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0qwylbi</bpmn:incoming>
       <bpmn:outgoing>Flow_19pb4pd</bpmn:outgoing>
     </bpmn:userTask>
@@ -45,17 +40,17 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="UserTask_OrderProcess">
-      <bpmndi:BPMNEdge id="Flow_0qwylbi_di" bpmnElement="Flow_0qwylbi">
-        <di:waypoint x="215" y="117" />
-        <di:waypoint x="280" y="117" />
+      <bpmndi:BPMNEdge id="Flow_024wxci_di" bpmnElement="Flow_024wxci">
+        <di:waypoint x="550" y="117" />
+        <di:waypoint x="612" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_19pb4pd_di" bpmnElement="Flow_19pb4pd">
         <di:waypoint x="380" y="117" />
         <di:waypoint x="450" y="117" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_024wxci_di" bpmnElement="Flow_024wxci">
-        <di:waypoint x="550" y="117" />
-        <di:waypoint x="612" y="117" />
+      <bpmndi:BPMNEdge id="Flow_0qwylbi_di" bpmnElement="Flow_0qwylbi">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="280" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_OrderReceived">
         <dc:Bounds x="179" y="99" width="36" height="36" />
@@ -66,14 +61,14 @@
       <bpmndi:BPMNShape id="Activity_0cl4cn5_di" bpmnElement="Task_ProcessOrder">
         <dc:Bounds x="280" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_05jmaxx_di" bpmnElement="Task_DeliverOrder">
-        <dc:Bounds x="450" y="77" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0xlxuyd_di" bpmnElement="EndEvent_OrderCompleted">
         <dc:Bounds x="612" y="99" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="590" y="142" width="82" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05jmaxx_di" bpmnElement="Task_DeliverOrder">
+        <dc:Bounds x="450" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -33,8 +33,5 @@ This section provides an introduction to BPMN and includes practice exercises on
     - Timer Event
 
 
-### Patterns
-
-
 
 

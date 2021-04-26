@@ -50,17 +50,14 @@ If a `boolean` contains the validation `required`, the checkbox must be selected
 By configuring the User Task, we can control who the task is available to. The following options are available to us for this purpose:
 
 - Assignment to a specific person via the assignee attribute
-- Assignment to a group of persons via the candidate user / candidate group attribute
+- Assignment to a group of persons via the candidate group attribute
 
 ![Start Form](img/02-Assignment.png?raw=true "Start Form")
 
 ### 2.1 Process Order
-In our process, the task "Process Order" is always processed by XY. Therefore we can enter this as assignee.
+In our process, the task "Process Order" is always processed by `mary`. Therefore we can enter her as assignee.
 
-Start the process and then log in with XY to complete the Process Order task.
+Start the process and then log in with `mary` to complete the "Process Order" task.
 
 ### 2.2 Deliver Order
-The delivery can be made by any person who is in the group logistic.
-
-
-## 3. Configure a timeout (advanced)
+The delivery can be made by any person who is in the group `delivery`.
