@@ -26,8 +26,8 @@ So far, we only have the customer's phone number. However, we need the e-mail ad
 
 ## 3. Use data in e-mail sending
 
-Jetzt müssen wir nur noch die richtigen Informationen versenden.
-Die Antwort des Fahreres können wir als `content` setzen. Die `email` aus dem Startformular können wir als Empfänger in das Template geben.
+Now we just have to send the correct information.
+We can set the driver's response as `content`. We can put the`email` from the start form into the template as recipient.
 
 ![Configure Template](img/03-configure-template.png?raw=true "Configure Template")
 
