@@ -33,6 +33,8 @@ ${ageCalculationDelegate}
 in the "Delegate Expression" textfield, to call it as soon as the task is started.
 Now redeploy your process and test the execution. Did the servicetask calculate the age correctly?
 
+(If you're tired of entering all the properties manually, you can also download the Element Template "ageCalculationTemplate.json" from this folder, store it locally in your camunda-modeler-templates-folder as described in [exercise 1](https://github.com/camunda-university-meetup/exercises/tree/main/bpmn/tasks/servicetask/exercise-1) and simply select the template)
+
 If everything is working, try to switch the "Check data"-task to a servicetask aswell. Use this template for the new Java class and let the method print the birthdate and the calculated age in the console. Check the "AgeCalculationDelegate.java" class to find out which methods are used to fetch the fetch the required input.
 
 ```java
