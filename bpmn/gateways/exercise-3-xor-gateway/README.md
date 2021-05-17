@@ -22,4 +22,4 @@ Add conditions to the different flows by clicking the arrows coming out of the s
 
 # 3. Deploy the process and test it
 
-Deploy the process using the Camunda-Modeler UI. Start the process and try to enter *rainy* or *sunny* when you are asked to check the weather. Does the engine execute the correct path? What happens if the weather is *foggy*? Try to enter a string to the form which is not defined in the following workflow. Interpret your findings and think about a way to improve the process.
+Deploy the process using the Camunda-Modeler UI. Start the process and try to enter *rainy* or *sunny* when you are asked to check the weather. Does the engine execute the correct path? What happens if the weather is *snowy*? Try to enter a string to the form which is not defined in the following workflow. Discuss the pros and cons of using boolean values or string values for XOR-Gateways. Interpret your findings and think about a way to improve the process.
