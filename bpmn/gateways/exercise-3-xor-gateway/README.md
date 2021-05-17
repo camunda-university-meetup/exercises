@@ -2,7 +2,7 @@
 
 The following process is used to decide about what to do with your free time in the afternoon:
 
-![Process Diagram](https://github.com/camunda-university-meetup/exercises/blob/dev/bpmn/gateways/XOR-Gateway/img/Process_afternoonActivity.png?raw=true)
+![Process Diagram](img/Process_afternoonActivity.png?raw=true)
 
 The process starts when you initially think of what you could do in the afternoon. First, you "Check the weather". After executing this task, you know if it is rainy or sunny outside and based on this information, you decide wheather to "Go to the park" or "Study". After executing this task, the process is finished.
 In order to collect the information about the weather on Camunda and guide the workflow into the corresponding direction, you'll have to add a form, where the user can enter the observed weather conditions, and afterwards use this process variable at the gateway to automate the decision about which task should be executed.
@@ -12,13 +12,13 @@ In order to collect the information about the weather on Camunda and guide the w
 
 Add a form to the activity "Check the weather", where the user has to enter if it is *sunny* or *rainy* today. Store this information in a process variable called "weather".
 
-![Activity checkWeather](https://github.com/camunda-university-meetup/exercises/blob/dev/bpmn/gateways/XOR-Gateway/img/Form_CheckWeather.png?raw=true)
+![Activity checkWeather](img/Form_CheckWeather.png?raw=true)
 
 # 2. Catch the process variables
 
 Add conditions to the different flows by clicking the arrows coming out of the splitting exclusive gateway. Use the condition type "Expression" and define the condition: The activity "Go to the park" should be executed if the weather is *sunny*, the activity "Study" should be executed if the weather is *rainy*.
 
-![Flow weather](https://github.com/camunda-university-meetup/exercises/blob/dev/bpmn/gateways/XOR-Gateway/img/Flow_weather.png?raw=true)
+![Flow weather](img/Flow_weather.png?raw=true)
 
 # 3. Deploy the process and test it
 
