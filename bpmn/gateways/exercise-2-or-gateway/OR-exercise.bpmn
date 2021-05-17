@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0pvupck" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0pvupck" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
   <bpmn:process id="Groceries-procurement_OR-Gateway-exercise" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_GroceriesRequired" name="Groceries required">
-      <bpmn:extensionElements>
-        <camunda:formData>
-          <camunda:formField id="apples" label="Apples required?" type="boolean" />
-          <camunda:formField id="steak" label="Steak required?" type="boolean" />
-          <camunda:formField id="noodles" label="Noodles required?" type="boolean" />
-        </camunda:formData>
-      </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="Groceries required">
       <bpmn:outgoing>Flow_0zxzyhx</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0zxzyhx" sourceRef="StartEvent_GroceriesRequired" targetRef="Activity_1ua895u" />
-    <bpmn:sequenceFlow id="Flow_1hksxmo" sourceRef="Gateway_1j6f4z3" targetRef="Activity_1ug68cn">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${steak}</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_06ie77m" sourceRef="Gateway_1j6f4z3" targetRef="Activity_0cho8ae">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${noodles}</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0zxzyhx" sourceRef="StartEvent_1" targetRef="Activity_1ua895u" />
+    <bpmn:sequenceFlow id="Flow_1hksxmo" sourceRef="Gateway_1j6f4z3" targetRef="Activity_1ug68cn" />
+    <bpmn:sequenceFlow id="Flow_06ie77m" sourceRef="Gateway_1j6f4z3" targetRef="Activity_0cho8ae" />
     <bpmn:inclusiveGateway id="Gateway_1j6f4z3">
       <bpmn:incoming>Flow_1g98ex2</bpmn:incoming>
       <bpmn:outgoing>Flow_1hksxmo</bpmn:outgoing>
@@ -38,9 +27,7 @@
       <bpmn:incoming>Flow_0pwwtpz</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1g98ex2" sourceRef="Activity_1ua895u" targetRef="Gateway_1j6f4z3" />
-    <bpmn:sequenceFlow id="Flow_08nbxwo" sourceRef="Gateway_1j6f4z3" targetRef="Activity_1bkfge8">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${apples}</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_08nbxwo" sourceRef="Gateway_1j6f4z3" targetRef="Activity_1bkfge8" />
     <bpmn:userTask id="Activity_1ua895u" name="Go to supermarket">
       <bpmn:incoming>Flow_0zxzyhx</bpmn:incoming>
       <bpmn:outgoing>Flow_1g98ex2</bpmn:outgoing>
@@ -60,6 +47,15 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Groceries-procurement_OR-Gateway-exercise">
+      <bpmndi:BPMNEdge id="Flow_08nbxwo_di" bpmnElement="Flow_08nbxwo">
+        <di:waypoint x="450" y="202" />
+        <di:waypoint x="450" y="120" />
+        <di:waypoint x="540" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1g98ex2_di" bpmnElement="Flow_1g98ex2">
+        <di:waypoint x="370" y="227" />
+        <di:waypoint x="425" y="227" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0pwwtpz_di" bpmnElement="Flow_0pwwtpz">
         <di:waypoint x="755" y="227" />
         <di:waypoint x="822" y="227" />
@@ -91,20 +87,14 @@
         <di:waypoint x="215" y="227" />
         <di:waypoint x="270" y="227" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1g98ex2_di" bpmnElement="Flow_1g98ex2">
-        <di:waypoint x="370" y="227" />
-        <di:waypoint x="425" y="227" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_08nbxwo_di" bpmnElement="Flow_08nbxwo">
-        <di:waypoint x="450" y="202" />
-        <di:waypoint x="450" y="120" />
-        <di:waypoint x="540" y="120" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_GroceriesRequired">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="209" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="174" y="252" width="48" height="27" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_06tco88_di" bpmnElement="Gateway_1j6f4z3">
+        <dc:Bounds x="425" y="202" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_08ax90g_di" bpmnElement="Gateway_0hmhsk7">
         <dc:Bounds x="705" y="202" width="50" height="50" />
@@ -114,9 +104,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="798" y="252" width="85" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_06tco88_di" bpmnElement="Gateway_1j6f4z3">
-        <dc:Bounds x="425" y="202" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_09uduge_di" bpmnElement="Activity_1ua895u">
         <dc:Bounds x="270" y="187" width="100" height="80" />
