@@ -17,7 +17,7 @@ Also test the process for a duration of *P0Y0M0DT0H0M30S*seconds by entering T30
 
 Let the professor select the time in seconds in the "Plan Lecture" task. Bind the value to the timer definition.
 
-*Hint*: You can use an expression in the timer definition e.g. T${selection}S. If the value "selection" contains 30, this would result in T30S.
+*Hint*: You can use an expression in the timer definition e.g. T${selection}M. If the value "selection" contains 30, this would result in T30M.
 
 ### Dates
 Copy the process model and change the id and name of the process.

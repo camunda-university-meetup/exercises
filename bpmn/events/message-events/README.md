@@ -7,8 +7,13 @@ Once an order is placed by the customer, an employee reviews the order, waits fo
 So far so good, but how can we trigger the event? In production, messages come, for example, from customers in the form of emails, which are processed by components of the backend. In our case we will simulate the customer request by an API call using [Postman](https://www.postman.com/downloads/). A documentation of the Message API from Camunda can be found [here](https://docs.camunda.org/manual/7.15/reference/rest/message/post-message/)
 
 ### Set up the communication
-Familiarize yourself with the [Message API](https://docs.camunda.org/manual/7.15/reference/rest/message/post-message/) and configure the Message event. You need to correlate the message to the process instance. This is done by using Correlation keys. In our case those keys could be the ordered product and a customer ID. Define the variables when the process is started and display them as readonly values in the "Check Product Availability"-task. 
-As soon as the process engine receives the message about the succeeded payment, the content of the message is mapped to a process variable.
+Familiarize yourself with the [Message API](https://docs.camunda.org/manual/7.15/reference/rest/message/post-message/) and configure the Message event. You need to correlate the message to the process instance. This is done by using Correlation keys. In our case those keys could be the ordered product and a customer ID.  
+As soon as the process engine receives the message about the succeeded payment, the content of the message is mapped to a process variable. When corellating a message the following variables can be set:
+- amount (string)
+- paymentType (String)
+
+Define the variables as readonly form fields in the "Deliver Product"-task.
+
 The payload of your POST-request should contain all the required information to do this. A sample payload looks like this: 
 ```
 {
@@ -19,11 +24,11 @@ The payload of your POST-request should contain all the required information to 
     "type": "String"}
 },
 "processVariables" : {
-    "variable1" : {
+    "amount" : {
         "value" : "100", 
         "type": "String"
         },
-    "variable2" : {
+    "paymentType" : {
         "value" : "credit", 
         "type": "String"
         }
@@ -34,6 +39,5 @@ The payload of your POST-request should contain all the required information to 
 Please create a POST-request in Postman with all required properties and make sure that the request is successfully accepted by the process engine. By fetching the process variables in the camunda web surface, you should be able to see your provided process variables.
 
 
-### Add a non-interrupting message event
-If a customer changes his mind and wants to cancel his order, an interrupting message event must be inserted. This cancellation process should be triggered by the customer's email, after which an employee must take care of canceling and deleting the order. 
-Model this termination process as a subprocess and then create a corresponding POST. The message from the customer should include the reason for the cancellation.
+### Add a interrupting message event in a event subprocess
+A customer can cancel the order anytime. This cancellation process should be triggered by the customer's email, after which an employee must take care of canceling and deleting the order. Model this termination process as a subprocess and then create a corresponding POST-Request. The message from the customer should include the reason for the cancellation. The cancellation is also checked by an employee to whom the reason is shown.
