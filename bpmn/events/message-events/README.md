@@ -7,7 +7,7 @@ Once an order is placed by the customer, an employee reviews the order, waits fo
 So far so good, but how can we trigger the event? In production, messages come, for example, from customers in the form of emails, which are processed by components of the backend. In our case we will simulate the customer request by an API call using [Postman](https://www.postman.com/downloads/). A documentation of the Message API from Camunda can be found [here](https://docs.camunda.org/manual/7.15/reference/rest/message/post-message/)
 
 ### Set up the communication
-Familiarize yourself with the [Message API](https://docs.camunda.org/manual/7.15/reference/rest/message/post-message/) and configure the Message event. You need to correlate the message to the process instance. This is done by using Correlation keys. As soon as the process engine receives the message, the content is set as process variable.
+Familiarize yourself with the [Message API](https://docs.camunda.org/manual/7.15/reference/rest/message/post-message/) and configure the Message event. You need to correlate the message to the process instance. This is done by using Correlation keys. In our case those keys could be the ordered product and a customer ID. As soon as the process engine receives the message, the content is set mapped to a process variable.
 The payload of your POST-request should contain all the required information to do this. A sample payload looks like this: 
 ```
 {
