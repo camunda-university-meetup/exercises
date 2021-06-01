@@ -13,11 +13,20 @@ After that you need to provide a timer definition. The specification of seconds,
 Enter *P0Y0M0DT0H1M0S* in the field for a duration of 1 minute.
 Also test the process for a duration of *P0Y0M0DT0H0M30S*seconds by entering T30S.
 
-### Dates
+### Bind to form field values
 
-Next try to pass a date to the timer event. The formatting is again done according to ISO 8601. An example for this is: 
+Let the professor select the time in seconds in the "Plan Lecture" task. Bind the value to the timer definition.
+
+*Hint*: You can use an expression in the timer definition e.g. T${selection}S. If the value "selection" contains 30, this would result in T30S.
+
+### Dates
+Copy the process model and change the id and name of the process.
+
+There is also the possibility to pass a date as definition type. Customize the corresponding form and let the professor select a date. The formatting is again done according to ISO 8601. An example for this is: 
 *2021-06-01T12:00:00*
 Deploy the process and test if the execution works as intended.
+
+*Hint*: If the date is in the past, the process continues immediately
 
 ### Cycles
 
