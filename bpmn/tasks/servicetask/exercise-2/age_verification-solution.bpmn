@@ -33,11 +33,11 @@
       <bpmn:incoming>Flow_005o9mq</bpmn:incoming>
       <bpmn:outgoing>Flow_1fg110p</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="calculateAge" name="Calculate Age" camunda:delegateExpression="${ageCalculationDelegate}">
+    <bpmn:serviceTask id="calculateAge" name="Calculate Age" camunda:modelerTemplate="com.camunda.university.ageCalculationDelegate" camunda:asyncBefore="true" camunda:delegateExpression="${ageCalculationDelegate}">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="birthdate">${birthdate}</camunda:inputParameter>
-          <camunda:outputParameter name="age">${age}</camunda:outputParameter>
+          <camunda:outputParameter>${age}</camunda:outputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0tcbtph</bpmn:incoming>
@@ -46,21 +46,21 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="age_verification-solution">
-      <bpmndi:BPMNEdge id="Flow_01b6js0_di" bpmnElement="Flow_01b6js0">
-        <di:waypoint x="215" y="117" />
-        <di:waypoint x="270" y="117" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0tcbtph_di" bpmnElement="Flow_0tcbtph">
-        <di:waypoint x="370" y="117" />
-        <di:waypoint x="430" y="117" />
+      <bpmndi:BPMNEdge id="Flow_1fg110p_di" bpmnElement="Flow_1fg110p">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="752" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_005o9mq_di" bpmnElement="Flow_005o9mq">
         <di:waypoint x="530" y="117" />
         <di:waypoint x="590" y="117" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1fg110p_di" bpmnElement="Flow_1fg110p">
-        <di:waypoint x="690" y="117" />
-        <di:waypoint x="752" y="117" />
+      <bpmndi:BPMNEdge id="Flow_0tcbtph_di" bpmnElement="Flow_0tcbtph">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01b6js0_di" bpmnElement="Flow_01b6js0">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="99" width="36" height="36" />
