@@ -1,0 +1,1 @@
+(self.webpackChunkcamunda_exercises=self.webpackChunkcamunda_exercises||[]).push([[265],{635:function(s){"use strict";s.exports=JSON.parse('{"allTagsPath":"/exercises/blog/tags","slug":"docusaurus","name":"docusaurus","count":1,"permalink":"/exercises/blog/tags/docusaurus"}')}}]);

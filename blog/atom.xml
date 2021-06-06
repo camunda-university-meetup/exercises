@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://camunda-university-meetup.github.io/blog</id>
+    <title>Camunda Exercises Blog</title>
+    <updated>2019-05-28T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://camunda-university-meetup.github.io/blog"/>
+    <subtitle>Camunda Exercises Blog</subtitle>
+    <icon>https://camunda-university-meetup.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Hola]]></title>
+        <id>hola</id>
+        <link href="https://camunda-university-meetup.github.io/exercises/blog/hola"/>
+        <updated>2019-05-28T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet]]></summary>
+    </entry>
+</feed>
