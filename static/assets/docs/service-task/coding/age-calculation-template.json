@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Age calculation task",
+    "id": "com.camunda.university.ageCalculationDelegate",
+    "appliesTo": [
+      "bpmn:ServiceTask"
+    ],
+    "properties": [
+      {
+        "label": "Implementation Type",
+        "type": "Hidden",
+        "value": "${ageCalculationDelegate}",
+        "editable": false,
+        "binding": {
+          "type": "property",
+          "name": "camunda:delegateExpression"
+        }
+      },
+      {
+        "label": "birthdate",
+        "value": "${birthdate}",
+        "type": "String",
+        "editable": false,
+        "binding": {
+          "type": "camunda:inputParameter",
+          "name": "birthdate"
+        },
+        "constraints": {
+          "notEmpty": true
+        }
+      },
+      {
+        "label": "age",
+        "type": "String",
+        "editable": false,
+        "binding": {
+          "type": "camunda:outputParameter",
+          "name": "age",
+          "source": "${age}"
+        }
+      },
+      {
+        "label": "Send Async?",
+        "type": "Boolean",
+        "value": true,
+        "binding": {
+          "type": "property",
+          "name": "camunda:asyncBefore"
+        }
+      }
+    ]
+  }
+]
