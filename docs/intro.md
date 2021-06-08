@@ -6,7 +6,7 @@ slug: /
 
 # Intro
 
-This repository contains various tasks to learn BPMN hands on.
+This page contains various tasks to learn BPMN hands on.
 
 ## Getting Started
 
