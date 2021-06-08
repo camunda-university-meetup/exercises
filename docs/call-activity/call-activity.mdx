@@ -2,4 +2,69 @@
 sidebar_position: 1
 ---
 
-# Call Activity
+# Order Process
+
+Your task is to divide the order process into different modules. The following reasons have led to the decision to restructure the process:
+
+- Ensure clarity of the process for the future: there are plans to introduce different payment methods and to expand delivery with third-party service providers.
+- Reusability: both delivery and payment should be provided in a reusable way for future use cases.
+
+The process looks like this:
+
+![process_event](/assets/docs/call-activity/process-call-activity.png)
+
+You can download the bpmn diagram <a target="_blank" href="/assets/docs/call-activity/order-process.bpmn" download="order-process.bpmn">here</a>.
+
+## 1. Create a Delivery process
+
+Delivery includes the tasks **Pack order** and **Deliver order**. These are to be outsourced to a separate process.
+First create a separate process and configure the process id and name.
+
+![process_event](/assets/docs/call-activity/process-delivery.png)
+
+Afterwards copy the two tasks. In the Modeler, you can copy an element using `ctrl + c` and paste it into another model using `ctrl + v`.
+
+![process_event](/assets/docs/call-activity/process-delivery-finished.png)
+
+In the next step, the new process is included in the parent **order process** as a **call activity**. Don't forget to enter the id of the delivery process as a called element.
+
+![process_event](/assets/docs/call-activity/process-order-with-delivery.png)
+
+Check which data the delivery process needs. Look at the defined forms in the User Tasks.
+Then enter the variable as in mapping into the process. The names of the variables can be specified as `Source` and `Target`.
+
+![process_event](/assets/docs/call-activity/process-delivery-variables.png)
+
+Then test the process before moving on to the next step.
+
+## 2. Create a payment process
+The next step is to outsource the payment to a separate process.
+To do this, first create a new process and configure the Id and name.
+
+![process_event](/assets/docs/call-activity/process-payment.png)
+
+After that, the event-based-gateway and the two events are transferred to the process.
+
+![process_event](/assets/docs/call-activity/process-payment-done.png)
+
+Now there is the problem that the two end events must be handled differently in the order process.
+There are several possibilities for this:
+
+* Create a variable, map it as an out variable to the order process and check it via a gateway
+* Throw an error that is caught as a boundary event in the order process
+
+Let's take a closer look at the second possibility.
+
+Modify the end event at the timeout and configure the corresponding properties:
+
+![process_event](/assets/docs/call-activity/process-payment-error.png)
+
+Include the payment process as a call activity in the order process and attach an error boundary event.
+
+![process_event](/assets/docs/call-activity/order-process-final.png)
+
+Now there is one last task. How can we correlate the payment to the correct process?
+For this we need to be able to specify the customer as the correlation key, for example.
+But this key is not available in the payment process.
+Solve this problem and run the process successfully!
+
