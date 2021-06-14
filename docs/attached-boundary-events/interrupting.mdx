@@ -1,0 +1,51 @@
+---
+sidebar_position: 1
+---
+
+# Interrupting
+Remember the process of the registration and submission of a thesis? The exercise introduced the <a target="_blank" href="/events/event-based-gateway">event-based gateway</a>.
+
+The process model looked like this:
+
+![process_event_based_gateway](/assets/docs/attached-boundary-events/interrupting/event-based-gateway-process.png)
+
+## Model the process differently
+Use the symbols from the symbolset below to model the process differently. Importantly the logic and execution order should be the same as in the process above.
+Each symbol can be used once. You can use as many sequence flows as needed.
+![process_event_based_gateway](/assets/docs/attached-boundary-events/interrupting/symbolset.png)
+
+The solution can be found  <a target="_blank" href="/assets/docs/attached-boundary-events/interrupting/process-attached-interrupting-boundary-event.bpmn" download="process-attached-interrupting-boundary-event.bpmn">here</a>.
+
+
+
+### Implement the process
+
+Configure the timer event and the receive message task (it has the same configuration as the message event) before you deploy the process model. Ensure that the user mary is responsible for checking the thesis, and that the user john is responsible for failing the students if the deadline is exceeded.
+
+### Send the message
+
+Sending the message works as before. You can use [Postman](https://www.postman.com/downloads/) again to send the message. Make sure the message correlation is matching, meaning that one message can only correlate with one instance.
+
+Correlation keys are used to assign to the correct process instance.
+Process variables are set as new variables when the message is delivered
+
+```
+{
+  "messageName" : "yourMessageName",
+  "correlationKeys" : {
+    "student" : {"value" : "yourStudentInput", "type": "String"}
+  },
+  "processVariables" : {
+    "variable1" : {"value" : "Your thesis", "type": "String"}
+  }
+}
+```
+
+## Advanced
+Can you think of another way to implement this process? You have learned about the event subprocess already <a target="_blank" href="/events/message-event#add-a-interrupting-message-event-in-a-event-subprocess">here</a>.
+Implement the same process using an event subprocess.
+Hint: In order to have the same execution logic you should consider including a subprocess. 
+
+
+
+
