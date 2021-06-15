@@ -4,7 +4,6 @@ sidebar_position: 2
 
 # Non-Interrupting
 
-
 Let’s add new requirements to our thesis registration and submission process:
 * Besides the name of the student and the topic the exam committee defines the deadline for the submission at the start of the process.
 The deadline is stored in a variable and is used to define the attached timer boundary event `{#deadline}`
@@ -13,19 +12,19 @@ The deadline is stored in a variable and is used to define the attached timer bo
 * During the submission phase the professor Mary gets every third week a reminder to check in with the students
 
 ## Model the process
-Add the new requirements to the process model: 
+Add the new requirements to the process model:
 
 ![process_attached_boundary_events](/assets/docs/attached-boundary-events/non-interrupting/process-attached-interrupting-boundary-event.png)
 
 ## Implement the process
-Hint: In order to update the deadline model the request for a deadline extension as an attached interrupting boundary event (We could use a non-interrupting event as well but if we do so we would need to provide some addional code to update the job within the Camunda Engine.) A solution for the model can be found <a target="_blank" href="/assets/docs/attached-boundary-events/non-interrupting/process-attached-non-interrupting-boundary-event.bpmn" download="process-attached-non-interrupting-boundary-event.bpmn">here</a>.
+Hint: In order to update the deadline model the request for a deadline extension as an attached interrupting boundary event (We could use a non-interrupting event as well but if we do so we would need to provide some additional code to update the job within the Camunda Engine.)
 
 * Implement a form for the exam committee to check the reason, the amount of extended days and a date field to adjust the deadline
 * Define the timer, so the professor mary get's every third week a reminder
 * Define the message for the extension request
 
-## Send a message: 
-Instead of submitting the thesis send a message for an extension request: 
+## Send a message:
+Instead of submitting the thesis send a message for an extension request:
 
 ```
 {
@@ -43,4 +42,4 @@ Instead of submitting the thesis send a message for an extension request:
 Observe the process in Cockpit
 
 ## Advanced
-Can the same logic be modeled by using an event-based gateway? 
+Can the same logic be modeled by using an event-based gateway?
