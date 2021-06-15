@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1u2mdii" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.7.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.14.0">
+  <bpmn:process id="AttachedInterruptingBoundaryEvent" name="Attached interrupting boundary event" isExecutable="true">
+    <bpmn:startEvent id="Event_14ydmae" name="Thesis registered">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="student" label="Student" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_021gqx0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_0oh5uve" name="Do not let student pass">
+      <bpmn:incoming>Flow_0hcgxjj</bpmn:incoming>
+      <bpmn:outgoing>Flow_08oyqhy</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_1nfjbm6" name="Control thesis">
+      <bpmn:incoming>Flow_088cvgm</bpmn:incoming>
+      <bpmn:outgoing>Flow_0e6y74q</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_10m3q18" name="thesis succeeded">
+      <bpmn:incoming>Flow_0e6y74q</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Event_1if6omf" name="thesis failed">
+      <bpmn:incoming>Flow_08oyqhy</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:receiveTask id="Activity_0rr5fx4" name="Thesis submitted">
+      <bpmn:incoming>Flow_021gqx0</bpmn:incoming>
+      <bpmn:outgoing>Flow_088cvgm</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="Flow_021gqx0" sourceRef="Event_14ydmae" targetRef="Activity_0rr5fx4" />
+    <bpmn:sequenceFlow id="Flow_088cvgm" sourceRef="Activity_0rr5fx4" targetRef="Activity_1nfjbm6" />
+    <bpmn:sequenceFlow id="Flow_0e6y74q" sourceRef="Activity_1nfjbm6" targetRef="Event_10m3q18" />
+    <bpmn:boundaryEvent id="Event_151onkn" name="deadline exceeded" attachedToRef="Activity_0rr5fx4">
+      <bpmn:outgoing>Flow_0hcgxjj</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_11w00hl" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0hcgxjj" sourceRef="Event_151onkn" targetRef="Activity_0oh5uve" />
+    <bpmn:sequenceFlow id="Flow_08oyqhy" sourceRef="Activity_0oh5uve" targetRef="Event_1if6omf" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="AttachedInterruptingBoundaryEvent">
+      <bpmndi:BPMNEdge id="Flow_021gqx0_di" bpmnElement="Flow_021gqx0">
+        <di:waypoint x="218" y="120" />
+        <di:waypoint x="300" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_088cvgm_di" bpmnElement="Flow_088cvgm">
+        <di:waypoint x="400" y="120" />
+        <di:waypoint x="450" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0e6y74q_di" bpmnElement="Flow_0e6y74q">
+        <di:waypoint x="550" y="120" />
+        <di:waypoint x="612" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hcgxjj_di" bpmnElement="Flow_0hcgxjj">
+        <di:waypoint x="350" y="178" />
+        <di:waypoint x="350" y="230" />
+        <di:waypoint x="450" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08oyqhy_di" bpmnElement="Flow_08oyqhy">
+        <di:waypoint x="550" y="230" />
+        <di:waypoint x="612" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_14ydmae_di" bpmnElement="Event_14ydmae">
+        <dc:Bounds x="182" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="145" width="85" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0rr5fx4_di" bpmnElement="Activity_0rr5fx4">
+        <dc:Bounds x="300" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1nfjbm6_di" bpmnElement="Activity_1nfjbm6">
+        <dc:Bounds x="450" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0oh5uve_di" bpmnElement="Activity_0oh5uve">
+        <dc:Bounds x="450" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1if6omf_di" bpmnElement="Event_1if6omf">
+        <dc:Bounds x="612" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="601" y="255" width="58" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_10m3q18_di" bpmnElement="Event_10m3q18">
+        <dc:Bounds x="612" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="588" y="145" width="85" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1n4cam6_di" bpmnElement="Event_151onkn" bioc:stroke="black" bioc:fill="white">
+        <dc:Bounds x="332" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="366" y="166" width="48" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
