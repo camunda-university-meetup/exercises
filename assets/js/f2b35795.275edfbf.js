@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcamunda_exercises=self.webpackChunkcamunda_exercises||[]).push([[945],{5641:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Hola","permalink":"/exercises/blog/hola"}]}')}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkcamunda_exercises=self.webpackChunkcamunda_exercises||[]).push([[104],{511:function(e){"use strict";e.exports=JSON.parse('{"allTagsPath":"/exercises/blog/tags","slug":"hola","name":"hola","count":1,"permalink":"/exercises/blog/tags/hola"}')}}]);
