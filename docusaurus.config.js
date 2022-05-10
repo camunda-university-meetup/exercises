@@ -39,7 +39,7 @@ module.exports = {
           items: [
             {
               label: 'Instructions',
-              to: '/instructions/deploying-diagrams',
+              to: 'camunda-7/instructions/deploying-diagrams',
             },
           ],
         },
