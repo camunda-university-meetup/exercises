@@ -1,0 +1,83 @@
+---
+sidebar_position: 2
+---
+
+# Service Task
+
+A service task represents a work item in the process with a specific type.
+
+![Process](/assets/docs/camunda-8/service-task.png "Service Task")
+
+When a service task is entered, a corresponding job is created. The process instance stops here and waits until the job is complete.
+A job worker can subscribe to the job type, process the jobs, and complete them using one of the Zeebe clients. When the job is complete, the service task is completed and the process instance continues.
+
+## Overview
+
+This assignment is about learning the interaction between Service and User Tasks.
+The following functionalities are used:
+- Reusable Connectors
+- Form creation
+- FEEL expressions to map data
+
+![Process](/assets/docs/camunda-8/service-task-assignment.png "Service Task")
+
+In this process, we request useful facts about cats at a public API. In the second step, we want to validate them in a form.
+
+
+To create this awesome automated process with service and user tasks, take the following steps:
+
+## Request cat fact
+
+1. To create a BPMN diagram, navigate to Web Modeler via the Modeler tab, and click New project.
+2. Name your project and select New > BPMN Diagram > + Create blank.
+3. Give your model a descriptive name, and then give your model a descriptive id within the General tab inside the properties panel on the right side of the screen. In this case, we've named our model Preparing dinner with an id of preparing-dinner.
+
+![Modeler](/assets/docs/camunda-8/modeler.png "Modeler")
+
+4. Use Web Modeler to design a BPMN flow with a service task. Create a Rest Call by dragging the task icon from the palette, or click the existing start event and the displayed task icon.
+5. Change the task type by clicking the wrench icon. Search for "Rest Connector" and select REST Connector (No Auth).
+
+![Rest Connector](/assets/docs/camunda-8/rest-connector.png "Rest Connector")
+
+6. Add a descriptive name using the properties panel. In this case, we've named ours "Request cat fact".
+7. Configure the URL and Result Expression.
+
+![Rest Connector Config](/assets/docs/camunda-8/rest-connector-config.png "Rest Connector Config")
+
+10. Deploy the process, start an instance and check the variables within the operate application
+
+## Create a User Task
+
+1. Create a user task by dragging the task icon from the palette and link it with the service task, or click the existing service task and the displayed task icon.
+5. Change the task type by clicking the wrench icon. Select User Task.
+6. Add a descriptive name using the properties panel. In this case, we've named ours "Check cat fact".
+
+## Implement a form
+
+1. To add a form and decide what's for dinner, return to the Modeler homepage and click New > Form.
+2. Name your form. In this case, we've named ours "Check cat fact".
+3. Click and drag the Text Field element onto the palette. Give this Text field a description within the properties panel and set the key to fact. We've described ours as "Cat Fact"
+
+> You have to link the form with the corresponding UserTask by selecting it.
+
+## Start and view your process instance
+
+1. To deploy your diagram to your cluster, click Deploy diagram > Deploy.
+2. To officially start a new process instance, click Start instance.
+3. Navigate to Operate by clicking the honeycomb icon next to the Start instance button.
+4. Click View process instances to see your process instance alongside the green token waiting at the user task.
+
+![Operate](/assets/docs/camunda-8/operate.png "Operate")
+
+## Complete a user task
+
+Within this example, we've included a form to demonstrate the completion of a human task. To learn more about creating forms within your diagrams, visit our guide on building forms with Modeler.
+
+1. Go back to your Camunda Platform 8 diagram and select the honeycomb icon and then View user tasks to take a look at your user tasks inside Tasklist.
+2. Select the open user task on the left panel of Tasks. In our example below, this is Decide what's for dinner.
+4. Next to Assignee, click Claim to claim the task.
+5. Once finished entering the appropriate information, click Complete Task.
+
+![Tasklist](/assets/docs/camunda-8/tasklist.png "Tasklist")
+
+6. Check the results within the operate application
