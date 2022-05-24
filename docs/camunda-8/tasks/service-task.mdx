@@ -30,9 +30,9 @@ To create this awesome automated process with service and user tasks, take the f
 
 1. To create a BPMN diagram, navigate to Web Modeler via the Modeler tab, and click New project.
 2. Name your project and select New > BPMN Diagram > + Create blank.
-3. Give your model a descriptive name, and then give your model a descriptive id within the General tab inside the properties panel on the right side of the screen. In this case, we've named our model Preparing dinner with an id of preparing-dinner.
+3. Give your model a descriptive name, and then give your model a descriptive id within the General tab inside the properties panel on the right side of the screen. In this case, we've named our model "Request Cat Fact" with an id of request-cat-fact.
 
-![Modeler](/assets/docs/camunda-8/modeler.png "Modeler")
+![Modeler](/assets/docs/camunda-8/modeler-cat-fact.png "Modeler")
 
 4. Use Web Modeler to design a BPMN flow with a service task. Create a Rest Call by dragging the task icon from the palette, or click the existing start event and the displayed task icon.
 5. Change the task type by clicking the wrench icon. Search for "Rest Connector" and select REST Connector (No Auth).
@@ -54,7 +54,7 @@ To create this awesome automated process with service and user tasks, take the f
 
 ## Implement a form
 
-1. To add a form and decide what's for dinner, return to the Modeler homepage and click New > Form.
+1. To add a form and check the cat fact, return to the Modeler homepage and click New > Form.
 2. Name your form. In this case, we've named ours "Check cat fact".
 3. Click and drag the Text Field element onto the palette. Give this Text field a description within the properties panel and set the key to fact. We've described ours as "Cat Fact"
 
@@ -67,17 +67,12 @@ To create this awesome automated process with service and user tasks, take the f
 3. Navigate to Operate by clicking the honeycomb icon next to the Start instance button.
 4. Click View process instances to see your process instance alongside the green token waiting at the user task.
 
-![Operate](/assets/docs/camunda-8/operate.png "Operate")
-
 ## Complete a user task
 
 Within this example, we've included a form to demonstrate the completion of a human task. To learn more about creating forms within your diagrams, visit our guide on building forms with Modeler.
 
 1. Go back to your Camunda Platform 8 diagram and select the honeycomb icon and then View user tasks to take a look at your user tasks inside Tasklist.
-2. Select the open user task on the left panel of Tasks. In our example below, this is Decide what's for dinner.
+2. Select the open user task on the left panel of Tasks.
 4. Next to Assignee, click Claim to claim the task.
 5. Once finished entering the appropriate information, click Complete Task.
-
-![Tasklist](/assets/docs/camunda-8/tasklist.png "Tasklist")
-
 6. Check the results within the operate application
