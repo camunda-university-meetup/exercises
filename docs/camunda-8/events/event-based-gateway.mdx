@@ -1,0 +1,51 @@
+---
+sidebar_position: 3
+---
+# Event-based-Gateway
+
+Digitizing the registration and submission of a thesis - is that possible? Of course!
+
+In the following task, you will have to deal with exactly that.
+The process is very simplified and consists of the following steps:
+
+- It starts with the registration of the thesis. There, the topic and name of the student must be specified.
+- Then you wait for the thesis to be submitted or the deadline of 12 weeks (1 minute for testing) to expire.
+- When the thesis is handed in, it must be checked by the professor (mary)
+- If the deadline for submission is exceeded, the exam committee (john) must not allow the student to pass.
+
+## Set up the CLI client
+
+Follow the instructions at https://docs.camunda.io/docs/apis-clients/cli-client/
+
+- Create a Client in the API tab of your camunda cloud cluster
+- Copy the values
+- Export them in your CLI
+
+```
+export ZEEBE_ADDRESS='[Zeebe API]'
+export ZEEBE_CLIENT_ID='[Client ID]'
+export ZEEBE_CLIENT_SECRET='[Client Secret]'
+```
+
+## 1. Complete the process
+
+![process_event](/assets/docs/events/event-based-gateway/process-event-based-gateway.png)
+
+Remember the task - we are talking about event based gateways!
+
+## 2. Configure the Events
+
+Configure the message and timer event you (hopefully) modeled
+
+### 3. Send the message
+
+In our case we will simulate the student request by an API call using [CLI client](https://docs.camunda.io/docs/apis-clients/cli-client/). A documentation of the Message API from Camunda can be found [here](https://docs.camunda.io/docs/components/concepts/messages/)
+
+Send the message to the correct process instance when submitting. Attention - only one process instance may be found for the correlation.
+
+Correlation keys are used to assign to the correct process instance.
+Process variables are set as new variables when the message is delivered
+
+```
+zbctl publish message "payment" --correlationKey "123" --variables `{ "myVariable": 5 }`
+```

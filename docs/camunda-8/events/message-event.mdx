@@ -1,0 +1,46 @@
+---
+sidebar_position: 2
+---
+
+# Message Event
+Message events can be used to start, interrupt or end messages. Additionally, they can used as non-interrupting events, e.g. if one of your customer requests some additional information without wanting to interrupt a process. The event always provides a name/ topic and carries a payload, basically like every simple email.
+
+Let us consider a simple Ordering Process:
+![process_event](/assets/docs/events/message-event/process-message-event.png)
+
+Once an order is placed by the customer, an employee reviews the order, waits for payment to be received, and then ships the ordered product.
+So far so good, but how can we trigger the event? In production, messages come, for example, from customers in the form of emails, which are processed by components of the backend. In our case we will simulate the customer request by an API call using the [CLI client](https://docs.camunda.io/docs/apis-clients/cli-client/). A documentation of the Message API from Camunda can be found [here](https://docs.camunda.io/docs/components/concepts/messages/)
+
+## Set up the CLI client
+
+Follow the instructions at https://docs.camunda.io/docs/apis-clients/cli-client/
+
+- Create a Client in the API tab of your camunda cloud cluster
+- Copy the values
+- Export them in your CLI
+
+```
+export ZEEBE_ADDRESS='[Zeebe API]'
+export ZEEBE_CLIENT_ID='[Client ID]'
+export ZEEBE_CLIENT_SECRET='[Client Secret]'
+```
+
+## Set up the communication
+Familiarize yourself with the [Message API](https://docs.camunda.io/docs/apis-clients/grpc/#publishmessage-rpc) and configure the Message event. You need to correlate the message to the process instance. This is done by using Correlation keys. In our case those keys could be the ordered product and a customer ID.
+As soon as the process engine receives the message about the succeeded payment, the content of the message is mapped to a process variable. When corellating a message the following variables can be set:
+- amount (string)
+- paymentType (String)
+
+Define the variables as readonly form fields in the "Deliver Product"-task.
+
+A sample request looks like this:
+```
+zbctl publish message "payment" --correlationKey "123" --variables `{ "myVariable": 5 }`
+
+```
+
+Create a request in the CLI with all required properties and make sure that the request is successfully accepted by the process engine. By fetching the process variables in the camunda web surface, you should be able to see your provided process variables.
+
+
+## Add a interrupting message event in a event subprocess
+A customer can cancel the order anytime. This cancellation process should be triggered by the customer's email, after which an employee must take care of canceling and deleting the order. Model this termination process as a subprocess and then create a corresponding Request. The message from the customer should include the reason for the cancellation. The cancellation is also checked by an employee to whom the reason is shown.
