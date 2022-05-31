@@ -20,16 +20,7 @@ Also test the process for a duration of *PT30S*seconds by entering T30S.
 
 Let the professor select the time in seconds in the "Plan Lecture" task. Bind the value to the timer definition.
 
-*Hint*: You can use an expression in the timer definition e.g. T${selection}M. If the value "selection" contains 30, this would result in T30M.
-
-## Dates
-Copy the process model and change the id and name of the process.
-
-There is also the possibility to pass a date as definition type. Customize the corresponding form and let the professor select a date. The formatting is again done according to ISO 8601. An example for this is:
-*2021-06-01T12:00:00*
-Deploy the process and test if the execution works as intended.
-
-*Hint*: If the date is in the past, the process continues immediately
+*Hint*: You can use an expression in the timer definition e.g. `= "PT" + selection + "M"` If the value "selection" contains "30", this would result in PT30M.
 
 ## Cycles
 
